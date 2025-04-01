@@ -28,7 +28,7 @@ const TaskFilters: React.FC<FilterProps> = ({ setSelectedFilters }) => {
     return (
         <div className='p-4'>
             <div className="flex gap-4">
-                <Dropdown name="status" label="STATUS" options={statusOptions} onChange={handleSelection} />
+                <Dropdown name="status" label="STATUS" options={statusOptions} onChange={handleSelection}/>
                 <Dropdown name="priority" label="PRIORITY" options={priorityOptions} onChange={handleSelection} />
             </div>
         </div>

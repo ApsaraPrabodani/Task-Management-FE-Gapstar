@@ -127,7 +127,7 @@ function App() {
         status: null,
         priority: null,
 		sort_by: 'status',
-		sort_order: 'asc'
+		sort_order: 'asc',
     });
 
 	useEffect(()=>{
@@ -153,7 +153,7 @@ function App() {
 		<div className="App">
 			<main>
 				{ loading && <Spinner/>}
-				<TaskList data={data} setSelectedFilters={setSelectedFilters} selectedFilters={selectedFilters}/>
+				<TaskList data={data} setSelectedFilters={setSelectedFilters} selectedFilters={selectedFilters} setData={setData}/>
 			</main>
 		</div>
 	);

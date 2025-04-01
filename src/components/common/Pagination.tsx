@@ -10,26 +10,8 @@ interface DropdownProps {
     setSelectedFilters: React.Dispatch<React.SetStateAction<{ [key: string]: string | null }>>;
 }
 
-
-// current_page: page,
-// last_page: Math.ceil(count / limit),
-// per_page: limit,
-// total: count,
-// from: skip + 1,
-// to: skip + count
-
 const Pagination: React.FC<DropdownProps> = ({ per_page, total, current_page, from, to, last_page, setSelectedFilters }) => {
-    const [customPagination, setCustomPagination] = useState<any[]>([]);
-    useMemo(() => {
-        const totalPages = Math.ceil(total / per_page);
-        const pagesArray = Array(totalPages).fill(null);
-        setCustomPagination(
-
-            Array(Math.ceil(total / per_page)).fill(null)
-        );
-    }, []);
     const pageNumbers = [];
-
     for (let i = 1; i <= Math.ceil(total / per_page); i++) {
         pageNumbers.push(i);
     }
@@ -43,29 +25,25 @@ const Pagination: React.FC<DropdownProps> = ({ per_page, total, current_page, fr
     };
 
     return (
-        <>
-
-            <div className="w-full  flex justify-center sm:justify-between flex-col sm:flex-row gap-5 mt-1.5 px-1 items-center">
-                <div className="text-lg">
-                    Showing {from} to {to} of {total} entries
-                </div>
-                <ul className="flex">
-                    {pageNumbers.map((number) => (
-                        <li
-                            className={`flex items-center justify-center w-[36px] rounded-[6px] h-[34px] border-[1px] border-solid border-[2px] bg-[#FFFFFF] cursor-pointer ${current_page == number
-                                ? "text-blue-600  border-sky-500"
-                                : "border-[#E4E4EB] "
-                                }`}
-                            onClick={(e) => handleClick(e, number)}
-                            key={number}
-                        >
-                            {number}
-                        </li>
-                    ))}
-                </ul>
+        <div className="w-full  flex justify-center sm:justify-between flex-col sm:flex-row gap-5 mt-1.5 px-1 items-center">
+            <div className="text-lg">
+                Showing {from} to {to} of {total} entries
             </div>
-        </>
-
+            <ul className="flex">
+                {pageNumbers.map((number) => (
+                    <li
+                        className={`flex items-center justify-center w-[36px] rounded-[6px] h-[34px] border-[1px] border-solid border-[2px] bg-[#FFFFFF] cursor-pointer ${current_page == number
+                            ? "text-blue-600  border-sky-500"
+                            : "border-[#E4E4EB] "
+                            }`}
+                        onClick={(e) => handleClick(e, number)}
+                        key={number}
+                    >
+                        {number}
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 };
 export default Pagination;

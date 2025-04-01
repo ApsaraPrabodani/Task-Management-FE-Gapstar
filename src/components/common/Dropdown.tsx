@@ -13,7 +13,7 @@ interface DropdownProps {
     onChange: (name: string, selected: OptionType | null) => void;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ name, options, label, onChange }) => {
+const Dropdown: React.FC<DropdownProps> = ({ name, options, label,  onChange }) => {
     const handleChange = (selected: OptionType | null) => {
         onChange(name, selected);
     };
